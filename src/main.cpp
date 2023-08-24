@@ -7,6 +7,8 @@ InputCommand getInput();
 void resetOutputs();
 
 void setup() {
+  Serial.begin(9600);
+
   // Steering wheel
   pinMode(BLACKPIN, INPUT_PULLUP);
   pinMode(BLUEPIN, OUTPUT);
@@ -19,8 +21,12 @@ void setup() {
   pinMode(VOL_DOWN_PIN, OUTPUT);
   pinMode(VOL_UP_PIN, OUTPUT);
 
+  resetOutputs();
+
   flashLed();
 }
+
+#define CMD_DELAY 125
 
 void loop() {
   resetOutputs();
@@ -28,10 +34,14 @@ void loop() {
   InputCommand command = getInput();
   switch(command) {
     case VolUp:
+      Serial.println("Cmd volup");
       digitalWrite(VOL_UP_PIN, LOW);
+      delay(CMD_DELAY);
       break;
     case VolDown:
+      Serial.println("Cmd voldown");
       digitalWrite(VOL_DOWN_PIN, LOW);
+      delay(CMD_DELAY);
       break;
   }
 }
