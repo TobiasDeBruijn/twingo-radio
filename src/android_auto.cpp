@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "android_auto.h"
 #include "pins.h"
+#include "debug.h"
 
 const int TRIGGER_DELAY = 125;
 
@@ -17,47 +18,49 @@ void unmuteSetVolume() {
   aaIsMuted = false;
 
   // Set the volume back to what it was before muting
-  for(int i = 0; i < aaCurrentVolume; i++) {
+  for (int i = 0; i < aaCurrentVolume; i++) {
     triggerPin(AA_VOL_UP_PIN);
   }
 }
 
-void triggerAACommand(AACommand inputType) {
-    switch(inputType) {
-      case AA_VOL_UP:
-        if(aaIsMuted) {
-          unmuteSetVolume();
-        }
+void triggerAACommand(AACommand cmd) {
+  fSerialWrite("Executing AA command: %s\n", getAACommandName(cmd));
 
-        aaCurrentVolume++;
-        triggerPin(AA_VOL_UP_PIN);
-        break;
-      case AA_VOL_DOWN:
-        if(aaIsMuted) {
-          unmuteSetVolume();
-        }
+  switch (cmd) {
+    case AA_VOL_UP:
+      if (aaIsMuted) {
+        unmuteSetVolume();
+      }
 
-        aaCurrentVolume = min(aaCurrentVolume - 1, 0);
-        triggerPin(AA_VOL_DOWN_PIN);
-        break;
-      case AA_TRACK_NEXT:
-        triggerPin(AA_TRACK_NEXT_PIN);
-        break;
-      case AA_TRACK_PREV:
-        triggerPin(AA_TRACK_PREV_PIN);
-        break;
-      case AA_MUTE:
-        triggerPin(AA_TRACK_PREV_PIN);
-        if(aaIsMuted) {
-          unmuteSetVolume();
-        } else {
-          aaIsMuted = true;
-        }
-    }
+      aaCurrentVolume++;
+      triggerPin(AA_VOL_UP_PIN);
+      break;
+    case AA_VOL_DOWN:
+      if (aaIsMuted) {
+        unmuteSetVolume();
+      }
+
+      aaCurrentVolume = min(aaCurrentVolume - 1, 0);
+      triggerPin(AA_VOL_DOWN_PIN);
+      break;
+    case AA_TRACK_NEXT:
+      triggerPin(AA_TRACK_NEXT_PIN);
+      break;
+    case AA_TRACK_PREV:
+      triggerPin(AA_TRACK_PREV_PIN);
+      break;
+    case AA_MUTE:
+      triggerPin(AA_TRACK_PREV_PIN);
+      if (aaIsMuted) {
+        unmuteSetVolume();
+      } else {
+        aaIsMuted = true;
+      }
+  }
 }
 
 bool AAInputFromSteeringWheelCommand(SteeringWheelCommand cmd, AACommand *out) {
-  switch(cmd) {
+  switch (cmd) {
     case ST_VolUp:
       *out = AA_VOL_UP;
       return true;
@@ -75,5 +78,15 @@ bool AAInputFromSteeringWheelCommand(SteeringWheelCommand cmd, AACommand *out) {
       return true;
     default:
       return false;
+  }
+}
+
+char* getAACommandName(AACommand cmd) {
+  switch(cmd) {
+    case AA_VOL_UP: return "AA_VOL_UP";
+    case AA_VOL_DOWN: return "AA_VOL_DOWN";
+    case AA_TRACK_NEXT: return "AA_TRACK_NEXT";
+    case AA_TRACK_PREV: return "AA_TRACK_PREV";
+    case AA_MUTE: return "AA_MUTE";
   }
 }

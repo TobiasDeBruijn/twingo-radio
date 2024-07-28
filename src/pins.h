@@ -4,12 +4,12 @@
 #define TWINGO_RADIO_PINS_H
 
 // Input pins from car steering wheel
-#define CAR_BLACKPIN 3
-#define CAR_BLUEPIN 5
+#define CAR_BLACKPIN 2
+#define CAR_BLUEPIN 3
 #define CAR_REDPIN 4
-#define CAR_GREENPIN 6
-#define CAR_YELLOWPIN 7
-#define CAR_BROWNPIN 2
+#define CAR_GREENPIN 5
+#define CAR_YELLOWPIN 6
+#define CAR_BROWNPIN 7
 
 #define NUM_CAR_OUTPUT_PINS 3
 

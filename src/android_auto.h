@@ -15,7 +15,9 @@ typedef enum AACommand {
     AA_MUTE
 } AACommand;
 
-void triggerAACommand(AACommand inputType);
+char* getAACommandName(AACommand cmd);
+
+void triggerAACommand(AACommand cmd);
 
 bool AAInputFromSteeringWheelCommand(SteeringWheelCommand cmd, AACommand *out);
 

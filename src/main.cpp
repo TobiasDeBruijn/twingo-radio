@@ -10,6 +10,7 @@
 void flashLed();
 void setupIoPins();
 void unmuteSetVolume();
+void toggleLed();
 
 bool mainIsPiReady = false;
 
@@ -31,10 +32,14 @@ void setup() {
 void loop() {
   // Handle incoming steering wheel commands
   SteeringWheelCommand command = getSteeringWheelInput();
-  AACommand aaCommand;
-  if(AAInputFromSteeringWheelCommand(command, &aaCommand)) {
-    fSerialWrite("Received known command from steering wheel, sending to AA.\n");
-    triggerAACommand(aaCommand);
+  if(command != ST_None) {
+    AACommand aaCommand;
+    if(AAInputFromSteeringWheelCommand(command, &aaCommand)) {
+      fSerialWrite("Received known command from steering wheel, sending to AA.\n");
+      triggerAACommand(aaCommand);
+    } else {
+      fSerialWrite("Received unknown command from steering wheel\n");
+    }
   }
 
   // Check car remote
@@ -60,8 +65,11 @@ void loop() {
     mainIsPiReady = true;
   }
 
-  // Show a sign of life
-  flashLed();
+  toggleLed();
+}
+
+void toggleLed() {
+  digitalWrite(LEDPIN, !digitalRead(LEDPIN));
 }
 
 void setupIoPins() {
