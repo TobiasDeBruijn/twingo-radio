@@ -1,37 +1,76 @@
 #include "Arduino.h"
 #include "pins.h"
 #include "steering_wheel.h"
-
-#define CMD_DELAY 125
+#include "android_auto.h"
+#include "relay.h"
+#include "pi.h"
+#include "debug.h"
 
 // Function prototypes
 void flashLed();
-void resetOutputs();
-void handleInputCommand(InputCommand inputCommand);
 void setupIoPins();
-void unmute();
+void unmuteSetVolume();
 
-/// Volume 'pulses' since boot
-int currentVolume = 0;
-/// Whether we are currently muted
-bool isMuted = false;
+bool mainIsPiReady = false;
 
 void setup() {
+  // Serial debugging
   Serial.begin(9600);
+  fSerialWrite("Hello World! Twingo Radio control unit.\n");
+
+  // Configure IO
   setupIoPins();
-  resetOutputs();
+
+  // Show a sign of life
   flashLed();
+
+  // Enable aux power
+  setAuxPower(true);
 }
 
 void loop() {
-  // Make sure the outputs are high, so that the commands dont
-  resetOutputs();
+  // Handle incoming steering wheel commands
+  SteeringWheelCommand command = getSteeringWheelInput();
+  AACommand aaCommand;
+  if(AAInputFromSteeringWheelCommand(command, &aaCommand)) {
+    fSerialWrite("Received known command from steering wheel, sending to AA.\n");
+    triggerAACommand(aaCommand);
+  }
 
-  InputCommand command = getSteeringWheelInput();
-  handleInputCommand(command);
+  // Check car remote
+  if(!isCarRemoteOn()) {
+    fSerialWrite("Car remote is no longer on, switching off.\n");
+
+    // Disable speakers
+    setAmpRemote(false);
+    // Wait for the speakers to actually turn off
+    delay(100);
+    // Finally, disable AA and ourselves
+    setAuxPower(false);
+
+    // Execution stops here due to power cut
+    return;
+  }
+
+  // Check if the Pi is ready for work
+  if(isPiReady() && !mainIsPiReady) {
+    fSerialWrite("Pi is ready. Enabling amplifier.\n");
+
+    setAmpRemote(true);
+    mainIsPiReady = true;
+  }
+
+  // Show a sign of life
+  flashLed();
 }
 
 void setupIoPins() {
+  fSerialWrite("Configuring IO pins.\n");
+  // Firstly, set all IO pins to the correct mode
+
+  // Arduino built-in
+  pinMode(LEDPIN, OUTPUT);
+
   // Steering wheel
   pinMode(CAR_BLACKPIN, INPUT_PULLUP);
   pinMode(CAR_BLUEPIN, OUTPUT);
@@ -41,94 +80,32 @@ void setupIoPins() {
   pinMode(CAR_BROWNPIN, INPUT_PULLUP);
 
   // Output to the raspberry pi
-  pinMode(VOL_DOWN_PIN, OUTPUT);
-  pinMode(VOL_UP_PIN, OUTPUT);
-  pinMode(MUTE_PIN, OUTPUT);
-  pinMode(TRACK_NEXT_PIN, OUTPUT);
-  pinMode(TRACK_PREV_PIN, OUTPUT);
-}
+  pinMode(AA_VOL_DOWN_PIN, OUTPUT);
+  pinMode(AA_VOL_UP_PIN, OUTPUT);
+  pinMode(AA_MUTE_PIN, OUTPUT);
+  pinMode(AA_TRACK_NEXT_PIN, OUTPUT);
+  pinMode(AA_TRACK_PREV_PIN, OUTPUT);
 
-void handleInputCommand(InputCommand inputCommand) {
-  switch(inputCommand) {
-    case VolUp: {
-      Serial.println("Cmd volup");
-      digitalWrite(VOL_UP_PIN, LOW);
+  // Input from the raspberry pi
+  pinMode(PI_READY_PIN, INPUT_PULLDOWN);
 
-      currentVolume++;
-      // We unmute if the volume is changed
-      unmute();
+  // Input from relays
+  pinMode(RE_REMOTE_DETECT_PIN, INPUT_PULLDOWN);
 
-      delay(CMD_DELAY);
-      break;
-    }
-    case VolDown: {
-      Serial.println("Cmd voldown");
-      digitalWrite(VOL_DOWN_PIN, LOW);
+  // Output to relays
+  pinMode(RE_AMP_REMOTE_PIN, OUTPUT);
+  pinMode(RE_AUX_POWER_PIN, OUTPUT);
 
-      // Decrement the current volume or set to zero.
-      currentVolume = currentVolume == 0 ? currentVolume = 0 : currentVolume - 1;
-      // We unmute if the volume is changed
-      unmute();
 
-      delay(CMD_DELAY);
-      break;
-    }
-    case TrackForward: {
-      Serial.println("Cmd Track Forward");
-
-      digitalWrite(TRACK_NEXT_PIN, LOW);
-
-      delay(CMD_DELAY);
-      break;
-    }
-    case TrackBack: {
-      Serial.println("Cmd Track Back");
-
-      digitalWrite(TRACK_PREV_PIN, LOW);
-
-      delay(CMD_DELAY);
-      break;
-    }
-    case Mute: {
-      Serial.println("Cmd mute");
-
-      isMuted = true;
-      digitalWrite(MUTE_PIN, LOW);
-
-      delay(CMD_DELAY);
-      break;
-    }
-  }
-}
-
-void unmute() {
-  if(!isMuted) {
-    return;
-  }
-
-  isMuted = false;
-
-  // Set the volume back to what it was before muting
-  for(int i = 0; i < currentVolume; i++) {
-    digitalWrite(VOL_UP_PIN, LOW);
-    delay(50);
-    digitalWrite(VOL_UP_PIN, HIGH);
-  }
-}
-
-/**
- * Reset the output pins going to the Raspberry Pi.
- */
-void resetOutputs() {
-  digitalWrite(VOL_UP_PIN, HIGH);
-  digitalWrite(VOL_DOWN_PIN, HIGH);
-  digitalWrite(MUTE_PIN, HIGH);
-  digitalWrite(TRACK_NEXT_PIN, HIGH);
-  digitalWrite(TRACK_PREV_PIN, HIGH);
+  // Secondly, some pins must be high by default
+  digitalWrite(AA_VOL_DOWN_PIN, HIGH);
+  digitalWrite(AA_VOL_UP_PIN, HIGH);
+  digitalWrite(AA_MUTE_PIN, HIGH);
+  digitalWrite(AA_TRACK_NEXT_PIN, HIGH);
+  digitalWrite(AA_TRACK_PREV_PIN, HIGH);
 }
 
 void flashLed() {
-  pinMode(LEDPIN, OUTPUT);
   digitalWrite(LEDPIN, LOW);
 
   for (unsigned char i = 0; i <= 7; i++) {

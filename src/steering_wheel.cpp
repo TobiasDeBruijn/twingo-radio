@@ -1,5 +1,4 @@
 #include "steering_wheel.h"
-#include <stdbool.h>
 #include "pins.h"
 #include <Arduino.h>
 
@@ -19,7 +18,7 @@ static unsigned char pin_cycle_current = 0;
  * Parse button presses from the steering wheel buttons
  * @return The button pressed
  */
-InputCommand getSteeringWheelInput() {
+SteeringWheelCommand getSteeringWheelInput() {
   // So on the first poll of the scrollwheel just store the current position and don't send a command
   unsigned char i;
 
@@ -50,15 +49,15 @@ InputCommand getSteeringWheelInput() {
     // (since there was no previously known scrollwheel position)
     if (first_run) {
       first_run = false;
-      return None;
+      return ST_None;
     }
 
     // If above calculation resulted in 1 or -2 the scrollwheel was rotated up (ccw)
     // If above calculation resulted in anything else the scrollwheel was rotated down (cw)
     if ((scrollwheel_current == 1) || (scrollwheel_current == -2)) {
-      return FolderBack;
+      return ST_FolderBack;
     } else {
-      return FolderForward;
+      return ST_FolderForward;
     }
   }
 
@@ -67,15 +66,15 @@ InputCommand getSteeringWheelInput() {
     switch(pin_cycle_current) {
       case 0:
         // RED (input) is LOW while GREEN (output) is LOW: bottom button pressed
-        return Source;
+        return ST_Source;
       case 1:
         // RED (input) is LOW while BLUE (output) is LOW: volume + button pressed
-        return VolUp;
+        return ST_VolUp;
       case 2:
         // RED (input) is LOW while YELLOW (output) is LOW: volume - button pressed
-        return VolDown;
+        return ST_VolDown;
       default:
-        return None;
+        return ST_None;
     }
   }
 
@@ -84,17 +83,17 @@ InputCommand getSteeringWheelInput() {
     switch(pin_cycle_current) {
       case 0:
         // BLACK (input) is LOW while GREEN (output) is LOW: top right button is pressed
-        return TrackForward;
+        return ST_TrackForward;
       case 1:
         // BLACK (input) is LOW while BLUE (output) is LOW: mute button is pressed
-        return Mute;
+        return ST_Mute;
       case 2:
         // BLACK (input) is LOW while YELLOW (output) is LOW: top left button is pressed
-        return TrackBack;
+        return ST_TrackBack;
       default:
-        return None;
+        return ST_None;
     }
   }
 
-  return None;
+  return ST_None;
 }
