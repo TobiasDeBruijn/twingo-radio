@@ -12,7 +12,10 @@ void unmuteSetVolume();
 void toggleLed();
 void handeCarRemote();
 
+/// Whether the Pi ready procedure has been executed
 bool mainIsPiReady = false;
+/// Whether the car's remote signal off procedure
+/// has been executed
 bool carRemoteOff = false;
 
 void setup() {
@@ -43,8 +46,17 @@ void loop() {
   // Check car remote
   handeCarRemote();
 
-  // Check if the Pi is ready for work
-  if(isPiReady() && !mainIsPiReady) {
+  // Due to a flaky hardware connection I haven't bothered to fix,
+  // and a broken pulldown resistor between PI_READY and GND,
+  // the ready signal from the Pi usually doesn't reach us
+  // bypass the pin check, and just go after 10s.
+
+  // Check for 10sec since boot
+  bool isPiReadyIsh = millis() / 1000 >= 10;
+
+  // Incase the hardware connection is playing nice, and the pi is ready
+  // before the timer has passed, we can proceed early.
+  if((isPiReady() || isPiReadyIsh) && !mainIsPiReady) {
     fSerialWrite("Pi is ready. Enabling amplifier.\n");
 
     // Still want to give it some time
@@ -58,6 +70,8 @@ void loop() {
 }
 
 void handeCarRemote() {
+  // Check whether the remote is not on anymore,
+  // and check that this procedure hasn't already been executed
   if(!isCarRemoteOn() && !carRemoteOff) {
     // The car remote is off while starting the car, we need to bridge this
     delay(5000);
@@ -72,7 +86,7 @@ void handeCarRemote() {
     setAmpRemote(false);
 
     // Wait for the speakers to actually turn off
-    delay(5000);
+    delay(2500);
 
     // Finally, disable AA and ourselves
     setAuxPower(false);
