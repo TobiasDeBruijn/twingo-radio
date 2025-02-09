@@ -7,12 +7,13 @@
 #include "debug.h"
 
 // Function prototypes
-void flashLed();
 void setupIoPins();
 void unmuteSetVolume();
 void toggleLed();
+void handeCarRemote();
 
 bool mainIsPiReady = false;
+bool carRemoteOff = false;
 
 void setup() {
   // Serial debugging
@@ -21,9 +22,6 @@ void setup() {
 
   // Configure IO
   setupIoPins();
-
-  // Show a sign of life
-  flashLed();
 
   // Enable aux power
   setAuxPower(true);
@@ -43,29 +41,48 @@ void loop() {
   }
 
   // Check car remote
-  if(!isCarRemoteOn()) {
-    fSerialWrite("Car remote is no longer on, switching off.\n");
-
-    // Disable speakers
-    setAmpRemote(false);
-    // Wait for the speakers to actually turn off
-    delay(100);
-    // Finally, disable AA and ourselves
-    setAuxPower(false);
-
-    // Execution stops here due to power cut
-    return;
-  }
+  handeCarRemote();
 
   // Check if the Pi is ready for work
   if(isPiReady() && !mainIsPiReady) {
     fSerialWrite("Pi is ready. Enabling amplifier.\n");
+
+    // Still want to give it some time
+    delay(2000);
 
     setAmpRemote(true);
     mainIsPiReady = true;
   }
 
   toggleLed();
+}
+
+void handeCarRemote() {
+  if(!isCarRemoteOn() && !carRemoteOff) {
+    // The car remote is off while starting the car, we need to bridge this
+    delay(5000);
+    if(isCarRemoteOn()) {
+      // Car remote is on again.
+      return;
+    }
+
+    fSerialWrite("Car remote is no longer on, switching off.\n");
+
+    // Disable speakers
+    setAmpRemote(false);
+
+    // Wait for the speakers to actually turn off
+    delay(5000);
+
+    // Finally, disable AA and ourselves
+    setAuxPower(false);
+
+    // Execution stops here due to power cut, but in case it is not,
+    // like when powering the arduino through a laptop for development,
+    // this variable and the check above prevent a lot of spamming.
+    carRemoteOff = true;
+    return;
+  }
 }
 
 void toggleLed() {
@@ -95,10 +112,10 @@ void setupIoPins() {
   pinMode(AA_TRACK_PREV_PIN, OUTPUT);
 
   // Input from the raspberry pi
-  pinMode(PI_READY_PIN, INPUT_PULLDOWN);
+  pinMode(PI_READY_PIN, INPUT);
 
   // Input from relays
-  pinMode(RE_REMOTE_DETECT_PIN, INPUT_PULLDOWN);
+  pinMode(RE_REMOTE_DETECT_PIN, INPUT);
 
   // Output to relays
   pinMode(RE_AMP_REMOTE_PIN, OUTPUT);
@@ -111,16 +128,4 @@ void setupIoPins() {
   digitalWrite(AA_MUTE_PIN, HIGH);
   digitalWrite(AA_TRACK_NEXT_PIN, HIGH);
   digitalWrite(AA_TRACK_PREV_PIN, HIGH);
-}
-
-void flashLed() {
-  digitalWrite(LEDPIN, LOW);
-
-  for (unsigned char i = 0; i <= 7; i++) {
-    delay(100);
-    digitalWrite(LEDPIN, !digitalRead(LEDPIN));
-  }
-
-  delay(100);
-  digitalWrite(LEDPIN, LOW);
 }
