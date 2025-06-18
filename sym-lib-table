@@ -1,0 +1,6 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "SRD-05VDC-SL-C")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/SRD-05VDC-SL-C.kicad_sym")(options "")(descr ""))
+  (lib (name "SRD-12VDC-SL-C")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/SRD-12VDC-SL-C.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS562210A")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/TPS562210A.kicad_sym")(options "")(descr ""))
+)
