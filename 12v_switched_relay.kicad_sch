@@ -1,12 +1,14 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "f3661345-1609-4765-8fa9-db1fa69cbcff")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -125,10 +127,15 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Diode:1N4007"
-			(pin_numbers hide)
-			(pin_names hide)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -226,10 +233,10 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 0) (xy -1.27 0)
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -238,10 +245,10 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+						(xy 1.27 0) (xy -1.27 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -287,6 +294,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "SRD-12VDC-SL-C:SRD-12VDC-SL-C"
 			(pin_names
@@ -462,15 +470,16 @@
 				)
 			)
 			(symbol "SRD-12VDC-SL-C_0_0"
-				(rectangle
-					(start -7.62 -7.62)
-					(end 7.62 7.62)
+				(polyline
+					(pts
+						(xy -7.62 5.08) (xy -2.54 5.08)
+					)
 					(stroke
 						(width 0.254)
 						(type default)
 					)
 					(fill
-						(type background)
+						(type none)
 					)
 				)
 				(polyline
@@ -485,9 +494,20 @@
 						(type none)
 					)
 				)
+				(rectangle
+					(start -7.62 -7.62)
+					(end 7.62 7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
 				(polyline
 					(pts
-						(xy -7.62 5.08) (xy -2.54 5.08)
+						(xy -3.81 0.635) (xy -2.54 0.635)
 					)
 					(stroke
 						(width 0.254)
@@ -511,7 +531,19 @@
 				)
 				(polyline
 					(pts
-						(xy -3.81 0.635) (xy -2.54 0.635)
+						(xy -2.54 5.08) (xy -2.54 0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 0.635) (xy -1.27 0.635)
 					)
 					(stroke
 						(width 0.254)
@@ -547,19 +579,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.54 0.635) (xy -1.27 0.635)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 5.08) (xy -2.54 0.635)
+						(xy -1.27 0.635) (xy -1.27 -0.635)
 					)
 					(stroke
 						(width 0.254)
@@ -583,26 +603,14 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 0.635) (xy -1.27 -0.635)
+						(xy 1.905 -2.54) (xy 3.175 -2.54) (xy 2.54 -1.27) (xy 1.905 -2.54)
 					)
 					(stroke
 						(width 0.254)
 						(type default)
 					)
 					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -5.08) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
+						(type outline)
 					)
 				)
 				(polyline
@@ -631,7 +639,7 @@
 				)
 				(polyline
 					(pts
-						(xy 3.81 0) (xy 1.27 1.905)
+						(xy 2.54 -5.08) (xy 2.54 -2.54)
 					)
 					(stroke
 						(width 0.254)
@@ -643,7 +651,19 @@
 				)
 				(polyline
 					(pts
-						(xy 7.62 -5.08) (xy 2.54 -5.08)
+						(xy 3.175 2.54) (xy 1.905 2.54) (xy 2.54 1.27) (xy 3.175 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.81 0) (xy 1.27 1.905)
 					)
 					(stroke
 						(width 0.254)
@@ -667,26 +687,14 @@
 				)
 				(polyline
 					(pts
-						(xy 1.905 -2.54) (xy 3.175 -2.54) (xy 2.54 -1.27) (xy 1.905 -2.54)
+						(xy 7.62 -5.08) (xy 2.54 -5.08)
 					)
 					(stroke
 						(width 0.254)
 						(type default)
 					)
 					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.175 2.54) (xy 1.905 2.54) (xy 2.54 1.27) (xy 3.175 2.54)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
+						(type none)
 					)
 				)
 				(pin passive line
@@ -726,24 +734,6 @@
 					)
 				)
 				(pin passive line
-					(at 10.16 0 180)
-					(length 5.08)
-					(name "~"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-					(number "COM"
-						(effects
-							(font
-								(size 1.016 1.016)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 10.16 5.08 180)
 					(length 5.08)
 					(name "~"
@@ -754,6 +744,24 @@
 						)
 					)
 					(number "NC"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 5.08)
+					(name "~"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "COM"
 						(effects
 							(font
 								(size 1.016 1.016)
@@ -780,9 +788,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Transistor_FET:BS170"
-			(pin_names hide)
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -855,18 +866,6 @@
 			(symbol "BS170_0_1"
 				(polyline
 					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
 					)
 					(stroke
@@ -879,7 +878,19 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -903,34 +914,10 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
 					)
 					(stroke
 						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
 						(type default)
 					)
 					(fill
@@ -961,6 +948,63 @@
 						(type outline)
 					)
 				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(polyline
 					(pts
 						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
@@ -985,59 +1029,8 @@
 						(type none)
 					)
 				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
 			)
 			(symbol "BS170_1_1"
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -1049,6 +1042,24 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1075,6 +1086,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+12V"
 			(power)
@@ -1152,7 +1164,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1164,7 +1176,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1178,7 +1190,8 @@
 			(symbol "+12V_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "+12V"
 						(effects
 							(font
@@ -1195,6 +1208,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
@@ -1274,7 +1288,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -1291,6 +1306,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 	)
 	(junction
@@ -1481,7 +1497,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3428e5b7-255a-432c-8995-737544fc86ec")
-		(property "Reference" "#PWR3"
+		(property "Reference" "#PWR28"
 			(at 133.35 93.98 0)
 			(effects
 				(font
@@ -1526,14 +1542,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "d2659806-ccc3-4af8-955e-63ef14611c80")
+			(uuid "a9b15baf-b9d1-4cf9-bc1c-24ab7e6c1743")
 		)
 		(instances
 			(project "twingo_aa"
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/07c20ec4-560b-4446-9e27-966b386d70c5"
-					(reference "#PWR3")
-					(unit 1)
-				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/b9f9eead-f3cf-4016-8c85-192ff17ff478"
 					(reference "#PWR28")
 					(unit 1)
@@ -1551,7 +1563,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "347b77c4-652c-4c95-9d58-c2ff5fbeed12")
-		(property "Reference" "D5"
+		(property "Reference" "D6"
 			(at 135.89 95.2499 90)
 			(effects
 				(font
@@ -1615,17 +1627,13 @@
 			)
 		)
 		(pin "2"
-			(uuid "2c019df7-7887-452e-a781-80e7282729ca")
+			(uuid "c95138b7-7fe8-4757-9fa2-5b8f8d55f17f")
 		)
 		(pin "1"
-			(uuid "62ce9009-b719-4db8-9c0d-341d9e506718")
+			(uuid "208805eb-fbab-4681-84b3-39c77bb1f84f")
 		)
 		(instances
 			(project "twingo_aa"
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/07c20ec4-560b-4446-9e27-966b386d70c5"
-					(reference "D5")
-					(unit 1)
-				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/b9f9eead-f3cf-4016-8c85-192ff17ff478"
 					(reference "D6")
 					(unit 1)
@@ -1643,7 +1651,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3e9b2b6c-ab2e-4d36-91e8-48523434f6b6")
-		(property "Reference" "Q3"
+		(property "Reference" "Q4"
 			(at 137.16 111.7599 0)
 			(effects
 				(font
@@ -1692,20 +1700,16 @@
 			)
 		)
 		(pin "1"
-			(uuid "2f888dd3-7f27-41ae-9e85-402a9f4e6d7d")
+			(uuid "b25ef995-0158-4137-b5e7-e429abe80001")
 		)
 		(pin "3"
-			(uuid "1b4d91c1-0d77-4aef-a125-7b1b9fe21c88")
+			(uuid "325c4df0-7abb-4238-9a87-0b334a7da241")
 		)
 		(pin "2"
-			(uuid "7e8d2852-b393-4a32-9980-1a803a2d76bb")
+			(uuid "7e73e553-ba23-47c8-8536-7c6eff569c53")
 		)
 		(instances
 			(project "twingo_aa"
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/07c20ec4-560b-4446-9e27-966b386d70c5"
-					(reference "Q3")
-					(unit 1)
-				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/b9f9eead-f3cf-4016-8c85-192ff17ff478"
 					(reference "Q4")
 					(unit 1)
@@ -1723,7 +1727,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b55f958d-c49a-4104-9e10-e254b280707a")
-		(property "Reference" "#PWR30"
+		(property "Reference" "#PWR32"
 			(at 133.35 127 0)
 			(effects
 				(font
@@ -1768,14 +1772,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "7e98a77d-439a-4dc1-a314-635429196cd0")
+			(uuid "c9271de6-c304-49f9-8349-a704f2407461")
 		)
 		(instances
 			(project "twingo_aa"
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/07c20ec4-560b-4446-9e27-966b386d70c5"
-					(reference "#PWR30")
-					(unit 1)
-				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/b9f9eead-f3cf-4016-8c85-192ff17ff478"
 					(reference "#PWR32")
 					(unit 1)
@@ -1793,7 +1793,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d987ae6e-34fe-43f5-9a0b-0acce2fa5831")
-		(property "Reference" "R7"
+		(property "Reference" "R8"
 			(at 123.19 115.5699 0)
 			(effects
 				(font
@@ -1802,7 +1802,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "R"
+		(property "Value" "10K"
 			(at 123.19 118.1099 0)
 			(effects
 				(font
@@ -1811,7 +1811,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 118.872 116.84 90)
 			(effects
 				(font
@@ -1839,17 +1839,13 @@
 			)
 		)
 		(pin "2"
-			(uuid "3f1f0215-dd8d-45d3-9fd3-b571351fb332")
+			(uuid "25d3b00f-db48-407b-9745-ff8b1d19974b")
 		)
 		(pin "1"
-			(uuid "2a53b227-71fd-48cf-9dce-822320cdf046")
+			(uuid "d5185924-d748-44dc-94b1-e14024944387")
 		)
 		(instances
 			(project "twingo_aa"
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/07c20ec4-560b-4446-9e27-966b386d70c5"
-					(reference "R7")
-					(unit 1)
-				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/b9f9eead-f3cf-4016-8c85-192ff17ff478"
 					(reference "R8")
 					(unit 1)
@@ -1867,7 +1863,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e6f29bda-f9ad-461d-bc9b-277d9a386103")
-		(property "Reference" "K3"
+		(property "Reference" "K4"
 			(at 153.67 82.55 0)
 			(effects
 				(font
@@ -1883,7 +1879,7 @@
 				)
 			)
 		)
-		(property "Footprint" "SRD-12VDC-SL-C:RELAY_SRD-12VDC-SL-C"
+		(property "Footprint" "footprints:RELAY_SRD-12VDC-SL-C"
 			(at 153.67 95.25 0)
 			(effects
 				(font
@@ -2032,26 +2028,22 @@
 			)
 		)
 		(pin "COIL2"
-			(uuid "f0e5c053-462f-4dab-8273-e2a2b9d97f6e")
+			(uuid "c862fe3e-c47f-4719-9659-ac0c870a365a")
 		)
 		(pin "COIL1"
-			(uuid "707baf23-f507-4afd-be0d-8bcf274c20b6")
+			(uuid "d5663dd3-95c4-4557-bc21-c3506d860291")
 		)
 		(pin "NO"
-			(uuid "c6bd7a1f-59f8-417d-9a58-40f944a548dc")
+			(uuid "c5b6b663-a4e3-46e0-9d96-cc1dfe64882b")
 		)
 		(pin "NC"
-			(uuid "63849d40-3155-494b-8802-0cb50573f855")
+			(uuid "e4a4baf5-7659-4d7c-85bf-00ad350ae94e")
 		)
 		(pin "COM"
-			(uuid "ec2b7042-932e-4c49-ac56-dee014f32012")
+			(uuid "5ff51321-28a7-4798-a143-ab0e194fab2f")
 		)
 		(instances
 			(project "twingo_aa"
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/07c20ec4-560b-4446-9e27-966b386d70c5"
-					(reference "K3")
-					(unit 1)
-				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/b9f9eead-f3cf-4016-8c85-192ff17ff478"
 					(reference "K4")
 					(unit 1)

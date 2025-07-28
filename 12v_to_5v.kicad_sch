@@ -1,12 +1,14 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "a17e10a2-8169-4474-b7ce-3dda2fd38d4d")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:C"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
@@ -79,7 +81,7 @@
 			(symbol "C_0_1"
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -2.032 0.762) (xy 2.032 0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -91,7 +93,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -140,11 +142,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:L"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -211,32 +218,8 @@
 			)
 			(symbol "L_0_1"
 				(arc
-					(start 0 -2.54)
-					(mid 0.6323 -1.905)
-					(end 0 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 -1.27)
-					(mid 0.6323 -0.635)
-					(end 0 0)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 0)
-					(mid 0.6323 0.635)
+					(start 0 2.54)
+					(mid 0.6323 1.905)
 					(end 0 1.27)
 					(stroke
 						(width 0)
@@ -248,8 +231,32 @@
 				)
 				(arc
 					(start 0 1.27)
-					(mid 0.6323 1.905)
-					(end 0 2.54)
+					(mid 0.6323 0.635)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6323 -0.635)
+					(end 0 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.27)
+					(mid 0.6323 -1.905)
+					(end 0 -2.54)
 					(stroke
 						(width 0)
 						(type default)
@@ -297,9 +304,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -418,6 +428,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "TPS562210A:TPS562210ADDFR"
 			(pin_names
@@ -500,18 +511,6 @@
 			(symbol "TPS562210ADDFR_0_1"
 				(polyline
 					(pts
-						(xy -17.78 -15.24) (xy 17.78 -15.24)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy -17.78 15.24) (xy -17.78 -15.24)
 					)
 					(stroke
@@ -524,7 +523,7 @@
 				)
 				(polyline
 					(pts
-						(xy 17.78 -15.24) (xy 17.78 15.24)
+						(xy -17.78 -15.24) (xy 17.78 -15.24)
 					)
 					(stroke
 						(width 0.2032)
@@ -546,17 +545,83 @@
 						(type none)
 					)
 				)
+				(polyline
+					(pts
+						(xy 17.78 -15.24) (xy 17.78 15.24)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin power_in line
-					(at 22.86 -12.7 180)
+					(at -22.86 10.16 0)
 					(length 5.08)
-					(name "GND"
+					(name "VIN"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -22.86 2.54 0)
+					(length 5.08)
+					(name "EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -22.86 -7.62 0)
+					(length 5.08)
+					(name "SS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 22.86 10.16 180)
+					(length 5.08)
+					(name "VBST"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -575,24 +640,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -22.86 10.16 0)
-					(length 5.08)
-					(name "VIN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -619,24 +666,6 @@
 					)
 				)
 				(pin input line
-					(at -22.86 -7.62 0)
-					(length 5.08)
-					(name "SS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
 					(at 22.86 -7.62 180)
 					(length 5.08)
 					(name "VFB"
@@ -654,35 +683,17 @@
 						)
 					)
 				)
-				(pin input line
-					(at -22.86 2.54 0)
-					(length 5.08)
-					(name "EN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin power_in line
-					(at 22.86 10.16 180)
+					(at 22.86 -12.7 180)
 					(length 5.08)
-					(name "VBST"
+					(name "GND"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "8"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -691,6 +702,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
@@ -770,7 +782,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -787,7 +800,18 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(text "Should be 304K"
+		(exclude_from_sim no)
+		(at 257.048 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "db17f335-52f8-4941-afdf-fa528589c590")
 	)
 	(junction
 		(at 187.96 88.9)
@@ -844,22 +868,10 @@
 		(uuid "a50f2ef6-922d-493f-a14a-f17c04c452f5")
 	)
 	(junction
-		(at 254 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "c6fce501-4699-4a1e-88ea-1a3ddec6b70d")
-	)
-	(junction
 		(at 180.34 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cb16de7e-32ba-4ec9-a815-1c94903567e8")
-	)
-	(junction
-		(at 187.96 104.14)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d0cdaaba-e1c6-4ff0-94d5-74b7d6a4817a")
 	)
 	(junction
 		(at 78.74 76.2)
@@ -939,7 +951,7 @@
 	)
 	(wire
 		(pts
-			(xy 187.96 88.9) (xy 187.96 104.14)
+			(xy 187.96 88.9) (xy 187.96 107.95)
 		)
 		(stroke
 			(width 0)
@@ -956,26 +968,6 @@
 			(type default)
 		)
 		(uuid "1fc41f52-aae6-4b8a-aa07-e4c2ba3afa96")
-	)
-	(wire
-		(pts
-			(xy 187.96 104.14) (xy 187.96 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "26359d70-48eb-4308-88ff-17ddfed57508")
-	)
-	(wire
-		(pts
-			(xy 195.58 104.14) (xy 254 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2915af8d-f848-4320-b35e-9b11c72f9ab0")
 	)
 	(wire
 		(pts
@@ -1019,7 +1011,7 @@
 	)
 	(wire
 		(pts
-			(xy 240.03 76.2) (xy 254 76.2)
+			(xy 240.03 76.2) (xy 257.81 76.2)
 		)
 		(stroke
 			(width 0)
@@ -1119,16 +1111,6 @@
 	)
 	(wire
 		(pts
-			(xy 254 76.2) (xy 257.81 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c43baa13-b757-400b-91d4-094e17a51ef0")
-	)
-	(wire
-		(pts
 			(xy 66.04 76.2) (xy 78.74 76.2)
 		)
 		(stroke
@@ -1156,16 +1138,6 @@
 			(type default)
 		)
 		(uuid "e096577b-bbc6-43b5-8c9c-8cd4302e04d9")
-	)
-	(wire
-		(pts
-			(xy 254 104.14) (xy 254 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e7b546dc-3259-4717-8ecb-977260f84e72")
 	)
 	(wire
 		(pts
@@ -1597,7 +1569,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 186.182 85.09 90)
 			(effects
 				(font
@@ -1735,7 +1707,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "footprints:TPS562210A_N"
 			(at 184.15 76.2 0)
 			(effects
 				(font
@@ -1943,7 +1915,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 238.252 92.71 90)
 			(effects
 				(font
@@ -2013,7 +1985,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_1206_3216Metric"
 			(at 111.252 87.63 90)
 			(effects
 				(font
@@ -2081,7 +2053,7 @@
 				)
 			)
 		)
-		(property "Footprint" "DDF0008A_N"
+		(property "Footprint" "footprints:TPS562210A_N"
 			(at 149.86 86.36 0)
 			(effects
 				(font
@@ -2145,74 +2117,6 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 191.77 104.14 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d00327eb-2d18-4865-8849-a37333b8e773")
-		(property "Reference" "R14"
-			(at 191.77 97.79 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10K"
-			(at 191.77 100.33 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 191.77 105.918 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 191.77 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 191.77 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "13ecd21f-30a5-4127-8b90-7f39bca015a4")
-		)
-		(pin "2"
-			(uuid "353d2959-de1b-4f21-83e8-6314d54c2bb2")
-		)
-		(instances
-			(project ""
-				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e70bba1a-d775-4d26-a9ad-f32d1f28b359"
-					(reference "R14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
 		(at 240.03 85.09 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2230,7 +2134,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "304K"
+		(property "Value" "300K"
 			(at 242.57 86.3599 0)
 			(effects
 				(font
@@ -2239,7 +2143,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 238.252 85.09 90)
 			(effects
 				(font
