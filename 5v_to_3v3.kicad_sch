@@ -144,6 +144,202 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "GND_1"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_1_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "GND_2"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_2_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_2_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(hide yes)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Regulator_Linear:XC6206PxxxMR"
 			(pin_names
 				(offset 0.254)
@@ -459,6 +655,7 @@
 		(uuid "91cab589-4000-4cca-9687-966dada8efcb")
 	)
 	(symbol
+		(lib_name "GND_2")
 		(lib_id "power:GND")
 		(at 146.05 90.17 0)
 		(unit 1)
@@ -468,7 +665,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "20123322-35a8-43e9-89b8-1105a34418f0")
-		(property "Reference" "#PWR35"
+		(property "Reference" "#PWR041"
 			(at 146.05 96.52 0)
 			(effects
 				(font
@@ -518,7 +715,7 @@
 		(instances
 			(project "twingo_aa"
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e76bedfd-b1e9-4b7f-8658-1c8889c6a913"
-					(reference "#PWR35")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -534,7 +731,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3fdbeb4e-9ccc-41d3-9d01-510c564645d4")
-		(property "Reference" "U1"
+		(property "Reference" "U3"
 			(at 146.05 76.2 0)
 			(effects
 				(font
@@ -590,13 +787,14 @@
 		(instances
 			(project ""
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e76bedfd-b1e9-4b7f-8658-1c8889c6a913"
-					(reference "U1")
+					(reference "U3")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
+		(lib_name "GND_1")
 		(lib_id "power:GND")
 		(at 127 90.17 0)
 		(unit 1)
@@ -606,7 +804,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "425cbe61-ea1f-4006-9454-907428e8ee74")
-		(property "Reference" "#PWR34"
+		(property "Reference" "#PWR040"
 			(at 127 96.52 0)
 			(effects
 				(font
@@ -656,7 +854,7 @@
 		(instances
 			(project ""
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e76bedfd-b1e9-4b7f-8658-1c8889c6a913"
-					(reference "#PWR34")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -672,7 +870,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4f812ce5-b0af-4f7b-b466-28bbf3d997d9")
-		(property "Reference" "#PWR36"
+		(property "Reference" "#PWR042"
 			(at 163.83 96.52 0)
 			(effects
 				(font
@@ -722,7 +920,7 @@
 		(instances
 			(project "twingo_aa"
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e76bedfd-b1e9-4b7f-8658-1c8889c6a913"
-					(reference "#PWR36")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -738,7 +936,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51da0da5-51c1-4086-b48f-5397e117fd37")
-		(property "Reference" "C7"
+		(property "Reference" "C15"
 			(at 130.81 85.0899 0)
 			(effects
 				(font
@@ -792,7 +990,7 @@
 		(instances
 			(project ""
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e76bedfd-b1e9-4b7f-8658-1c8889c6a913"
-					(reference "C7")
+					(reference "C15")
 					(unit 1)
 				)
 			)
@@ -808,7 +1006,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e15afd0f-1380-4252-8dd9-b9242485c98d")
-		(property "Reference" "C8"
+		(property "Reference" "C16"
 			(at 167.64 85.0899 0)
 			(effects
 				(font
@@ -862,7 +1060,7 @@
 		(instances
 			(project "twingo_aa"
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/e76bedfd-b1e9-4b7f-8658-1c8889c6a913"
-					(reference "C8")
+					(reference "C16")
 					(unit 1)
 				)
 			)

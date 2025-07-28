@@ -3,4 +3,5 @@
   (lib (name "SRD-05VDC-SL-C")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/SRD-05VDC-SL-C.kicad_sym")(options "")(descr ""))
   (lib (name "SRD-12VDC-SL-C")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/SRD-12VDC-SL-C.kicad_sym")(options "")(descr ""))
   (lib (name "TPS562210A")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/TPS562210A.kicad_sym")(options "")(descr ""))
+  (lib (name "TS-1187A-B-A-B")(type "KiCad")(uri "${KIPRJMOD}/library/symbols/TS-1187A-B-A-B.kicad_sym")(options "")(descr ""))
 )

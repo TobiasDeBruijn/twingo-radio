@@ -1605,7 +1605,7 @@
 				)
 			)
 		)
-		(property "Footprint" "footprints:SRD-05VDC-SL-C"
+		(property "Footprint" "footprints:RELAY_SRD-05VDC-SL-C"
 			(at 146.05 95.25 0)
 			(effects
 				(font
@@ -1772,7 +1772,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "790a7bab-0192-407e-8b57-fa23067cd6d2")
-		(property "Reference" "#PWR2"
+		(property "Reference" "#PWR029"
 			(at 130.81 129.54 0)
 			(effects
 				(font
@@ -1822,11 +1822,11 @@
 		(instances
 			(project "twingo_aa"
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/7b2498f2-a50b-4ca1-aa81-485de40240be"
-					(reference "#PWR25")
+					(reference "#PWR031")
 					(unit 1)
 				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/c1c62b4b-e08e-4f46-8e45-465316d28a17"
-					(reference "#PWR2")
+					(reference "#PWR029")
 					(unit 1)
 				)
 			)
@@ -1842,7 +1842,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "81f6407e-bd98-470a-ae5e-2b03ee6e3dbf")
-		(property "Reference" "D3"
+		(property "Reference" "D4"
 			(at 128.27 95.2499 90)
 			(effects
 				(font
@@ -1914,11 +1914,11 @@
 		(instances
 			(project "twingo_aa"
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/7b2498f2-a50b-4ca1-aa81-485de40240be"
-					(reference "D4")
+					(reference "D5")
 					(unit 1)
 				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/c1c62b4b-e08e-4f46-8e45-465316d28a17"
-					(reference "D3")
+					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -1988,7 +1988,7 @@
 		(instances
 			(project ""
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/7b2498f2-a50b-4ca1-aa81-485de40240be"
-					(reference "R13")
+					(reference "R7")
 					(unit 1)
 				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/c1c62b4b-e08e-4f46-8e45-465316d28a17"
@@ -2008,7 +2008,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e4acda9a-7bb8-49fb-8034-bf4f4739cc70")
-		(property "Reference" "#PWR101"
+		(property "Reference" "#PWR028"
 			(at 130.81 96.52 0)
 			(effects
 				(font
@@ -2058,11 +2058,11 @@
 		(instances
 			(project "twingo_aa"
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/7b2498f2-a50b-4ca1-aa81-485de40240be"
-					(reference "#PWR4")
+					(reference "#PWR030")
 					(unit 1)
 				)
 				(path "/40f6f48c-88df-4c09-997b-20b4a32eb379/c1c62b4b-e08e-4f46-8e45-465316d28a17"
-					(reference "#PWR101")
+					(reference "#PWR028")
 					(unit 1)
 				)
 			)
